@@ -1,11 +1,11 @@
-POST http://localhost:8080/order
+POST http://localhost:8080/orders
 Content-Type: application/json
 
 {
   "name": "Pedido Exemplo"
 }
 
-GET http://localhost:8080/order
+GET http://localhost:8080/orders
 
 POST http://localhost:8081/graphql
 Content-Type: application/json

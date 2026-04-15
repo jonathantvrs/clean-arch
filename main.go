@@ -19,20 +19,16 @@ import (
 )
 
 func main() {
-	// Database connection
 	db := connectDB()
 	defer db.Close()
 
-	// Setup dependencies
 	orderRepo := repository.NewOrderRepository(db)
 	orderService := service.NewOrderService(orderRepo)
 
-	// Start servers
 	restServer := startRESTServer(orderService)
 	grpcServer := startGRPCServer(orderService)
 	graphqlServer := startGraphQLServer(orderService)
 
-	// Graceful shutdown
 	waitForShutdown(restServer, grpcServer, graphqlServer)
 }
 
