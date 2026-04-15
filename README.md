@@ -88,7 +88,15 @@ curl http://localhost:8080/orders
 Saída impressa:
 
 ```bash
-[{"id":1,"product_name":"Produto A","quantity":5,"created_at":"2025-05-21T14:27:04.752741Z"},{"id":2,"product_name":"Produto B","quantity":10,"created_at":"2025-05-21T14:27:17.325009Z"}]
+[
+  {
+    "id": 1,
+    "product_name": "Iphone 18",
+    "quantity": 2,
+    "created_at": "2025-05-21T14:27:04.752741Z"
+  },
+  {...}
+]
 ```
 
 
