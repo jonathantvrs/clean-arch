@@ -1,0 +1,10 @@
+schema:
+  - internal/handler/schema.graphql
+
+exec:
+  filename: internal/handler/generated/generated.go
+  package: generated
+
+model:
+  filename: internal/handler/model/order.go
+  package: model

@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: orders
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d orders"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  order-service:
+    build: .
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: orders
+      REST_PORT: 8080
+      GRPC_PORT: 50051
+      GRAPHQL_PORT: 8081
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+      - "8081:8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./proto:/app/proto
+      - ./internal/handler/schema.graphql:/app/internal/handler/schema.graphql
+      - ./gqlgen.yml:/app/gqlgen.yml
+
+volumes:
+  postgres_data:

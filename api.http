@@ -1,0 +1,15 @@
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "name": "Pedido Exemplo"
+}
+
+GET http://localhost:8080/order
+
+POST http://localhost:8081/graphql
+Content-Type: application/json
+
+{
+  "query": "{ listOrders { id name } }"
+}
