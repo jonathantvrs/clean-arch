@@ -15,8 +15,8 @@ A aplicação segue os princípios de arquitetura limpa.
 1. Clone o repositório:
 
 ```bash
-git clone <url-do-repositorio>
-cd clean-architecture
+git clone https://github.com/jonathantvrs/clean-arch.git
+cd clean-arch
 ```
 
 2. Baixe as dependências Go:
