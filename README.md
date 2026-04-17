@@ -112,7 +112,7 @@ Ou via terminal com o comando "**curl**":
 ```bash
 curl -X POST http://localhost:8081/graphql \
   -H "Content-Type: application/json" \
-  -d '{"query":"query { orders { id productName quantity createdAt } }"}'
+  -d '{"query":"query { listOrders { id productName quantity createdAt } }"}'
 ```
 
 Repare que a saída será o conteúdo do arquivo html apresentando pelo GraphQL
