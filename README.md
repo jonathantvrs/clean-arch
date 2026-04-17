@@ -6,7 +6,7 @@ A aplicação segue os princípios de arquitetura limpa.
 
 ## Requisitos
 
-- Go 1.21+
+- Go 1.24+
 - Docker e Docker Compose
 - PostgreSQL
 
