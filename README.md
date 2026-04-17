@@ -94,7 +94,7 @@ Saída impressa:
 
 GraphQL disponível na porta `8081`.
 Teste via navegador acessando a url: [http://localhost:8081](http://localhost:8081)
-Utilize a seguinte quwey para teste:
+Utilize a seguinte query para teste:
 
 ```graphql
 query {
