@@ -1,4 +1,4 @@
-FROM golang:1.23-alpine AS builder
+FROM golang:1.24.0-alpine AS builder
 
 RUN apk add --no-cache protobuf-dev git make
 
@@ -26,11 +26,20 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /order-service ./main.go
 
 FROM alpine:latest
 
+RUN apk add --no-cache curl ca-certificates
+
+RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.17.0/migrate.linux-amd64.tar.gz | tar xz && \
+    mv migrate /usr/local/bin/ && \
+    chmod +x /usr/local/bin/migrate
+
 WORKDIR /root/
 
 COPY --from=builder /order-service .
 COPY --from=builder /app/migrations /migrations
+COPY entrypoint.sh .
+
+RUN chmod +x /root/entrypoint.sh
 
 EXPOSE 8080 50051 8081
 
-CMD ["./order-service"]
+ENTRYPOINT ["/root/entrypoint.sh"]
