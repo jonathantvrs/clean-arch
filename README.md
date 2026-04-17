@@ -41,16 +41,6 @@ POSTGRES_DB=orders
 docker compose up --build
 ```
 
-## Migrações de Banco de Dados
-
-1. Instale o CLI do [golang-migrate](https://github.com/golang-migrate/migrate/releases).
-
-2. Execute a migração com:
-
-```bash
-migrate -path migrations -database "postgres://{seu_user}:{sua_password}@localhost:5432/{nome_do_seu_db}?sslmode=disable" up
-```
-
 ## Testes
 
 ### Verificar se o banco de dados foi criado
