@@ -98,7 +98,7 @@ Utilize a seguinte quwey para teste:
 
 ```graphql
 query {
-  orders {
+  listOrders {
     id
     productName
     quantity
